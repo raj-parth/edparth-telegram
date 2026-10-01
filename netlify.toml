@@ -57,10 +57,3 @@
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=2592000, immutable"
-
-# Redirects & 404 Routing
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  conditions = {Role = []}
