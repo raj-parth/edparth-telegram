@@ -121,7 +121,7 @@
           <img
             src="${escapeAttr(c.image)}"
             alt="${escapeAttr(c.title)}"
-            loading="lazy"
+            loading="eager"
             onerror="this.onerror=null; this.src='${escapeAttr(c.fallbackImage || '')}';"
           />
           <span class="card-cat-pill">${escapeHtml(c.category || 'Educational')}</span>
@@ -134,7 +134,7 @@
             <img
               src="${escapeAttr(c.image)}"
               alt="${escapeAttr(c.title)}"
-              loading="lazy"
+              loading="eager"
               onerror="this.onerror=null; this.src='${escapeAttr(c.fallbackImage || '')}';"
             />
           </div>
