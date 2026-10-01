@@ -1,0 +1,1471 @@
+/* ═══════════════════════════════════════════════════════════════════
+   EDPARTH — AWWWARDS RETRO-MODERN POSTER THEME
+   Directly Inspired by: Awwwards Free Fonts Specimen
+   Fonts: Big Shoulders Display & Bebas Neue (Headings) · Plus Jakarta Sans (Body)
+   Palette: Pine Green (#054d3f) · Vintage Mustard (#f8cc49) · Deep Midnight (#0f1040)
+            Dusty Rose (#ecc0bd) · Blossom Pink (#efb1c0) · Coral Red (#c62d3c)
+            Electric Cyan (#49e3e6) · Sunset Orange (#f17e27)
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ───────────────────────── 1. RESET & DESIGN TOKENS ───────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Exact Poster Specimen Color Palette */
+  --pine-green:       #054d3f;   /* Iconic poster pine green (Left Panel BG) */
+  --pine-dark:        #042d25;   /* Deep pine 3D shadow */
+  --pine-deep:        #174239;   /* Archival forest green (Right Panel 'BRAND') */
+  --pine-light:       #0a6150;
+
+  --midnight-navy:    #0f1040;   /* Deep indigo ink (Center Panel BG) */
+  --midnight-elevated:#161852;   /* Elevated midnight card */
+  --midnight-darker:  #080824;   /* Deepest obsidian navy */
+
+  --dusty-rose:       #ecc0bd;   /* Soft ballet peach / dusty rose (Right Panel BG) */
+  --dusty-rose-soft:  #f5dedb;
+  --dusty-rose-dim:   #d8a9a6;
+
+  --mustard-yellow:   #f8cc49;   /* Iconic vintage mustard (Left Panel 'GET') */
+  --mustard-hover:    #e5b938;
+
+  --mint-cyan:        #49e3e6;   /* Electric mint cyan (Left Panel subtitle) */
+  --blossom-pink:     #efb1c0;   /* Dusty blossom pink (Center Panel 'more') */
+  --coral-red:        #c62d3c;   /* Editorial coral crimson (Center Panel title) */
+  --sunset-orange:    #f17e27;   /* Warm retro tangerine (Right Panel 'WE DESIGN') */
+
+  /* Legacy / Aliases */
+  --bronze:           var(--mustard-yellow);
+  --gold:             var(--mustard-yellow);
+  --tg-blue:          #38bdf8;
+
+  /* Semantic UI Canvas (Dark Editorial Obsidian Foundation) */
+  --bg-base:          #0b0c26;   /* Rich midnight canvas */
+  --bg-surface:       #131448;   /* Elevated surface */
+  --bg-surface-alt:   #1a1c5c;
+  --bg-input:         #131448;
+
+  --text-primary:     #ffffff;   /* Pure white */
+  --text-secondary:   #d1d5f0;   /* Cool soft lavender */
+  --text-muted:       #8a8ebd;   /* Slate indigo */
+  --text-dim:         #686b96;
+
+  /* Borders & Dividers */
+  --border-fine:      rgba(236, 192, 189, 0.16);
+  --border-mid:       rgba(248, 204, 73, 0.35);
+  --border-focus:     var(--mustard-yellow);
+
+  /* Shadows */
+  --shadow-xs:        0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-sm:        0 4px 16px rgba(0, 0, 0, 0.35);
+  --shadow-card:      0 8px 28px rgba(0, 0, 0, 0.45);
+  --shadow-hover:     0 16px 40px rgba(0, 0, 0, 0.6);
+  --shadow-modal:     0 24px 70px rgba(0, 0, 0, 0.75);
+
+  --radius-xs:        4px;
+  --radius-sm:        8px;
+  --radius-md:        14px;
+  --radius-lg:        20px;
+  --radius-full:      9999px;
+
+  --transition:       0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.65;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Atmospheric Retro Poster Lighting */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 45% at 10% 15%, rgba(5, 77, 63, 0.45) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 40% at 85% 25%, rgba(236, 192, 189, 0.18) 0%, transparent 65%),
+    radial-gradient(ellipse 70% 50% at 50% 85%, rgba(15, 16, 64, 0.6) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 9px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: var(--pine-green); border-radius: var(--radius-full); }
+::-webkit-scrollbar-thumb:hover { background: var(--mustard-yellow); }
+
+/* ───────────────────────── 2. NAVBAR (POSTER HEADER) ───────────────────────── */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(20px, 5vw, 80px);
+  height: 84px;
+  background: rgba(15, 16, 64, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 2px solid var(--border-fine);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.brand-badge {
+  width: 48px;
+  height: 48px;
+  background: var(--pine-green);
+  border: 2px solid var(--mustard-yellow);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+  transition: transform var(--transition), box-shadow var(--transition);
+  flex-shrink: 0;
+}
+
+.brand-badge img,
+.brand-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.nav-brand:hover .brand-badge {
+  transform: rotate(-3deg) scale(1.08);
+  box-shadow: 0 6px 20px rgba(248, 204, 73, 0.4);
+}
+
+.brand-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-family: 'Big Shoulders Display', 'Bebas Neue', sans-serif;
+  font-size: 1.85rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-title-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--mustard-yellow);
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 10px var(--mustard-yellow);
+}
+
+.brand-sub {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--mint-cyan);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* CONTACT ADMIN PILL */
+.nav-btn-admin {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 22px;
+  background: rgba(236, 192, 189, 0.12);
+  border: 1.5px solid var(--dusty-rose);
+  color: var(--dusty-rose);
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all var(--transition);
+}
+
+.nav-btn-admin:hover {
+  background: var(--dusty-rose);
+  color: var(--pine-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(236, 192, 189, 0.3);
+}
+
+.nav-btn-admin .status-indicator {
+  width: 8px;
+  height: 8px;
+  background: var(--mint-cyan);
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px var(--mint-cyan);
+  flex-shrink: 0;
+}
+
+/* JOIN MAIN CHANNEL PILL */
+.nav-btn-tg {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 26px;
+  background: var(--mustard-yellow);
+  color: var(--midnight-navy);
+  border-radius: var(--radius-full);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(248, 204, 73, 0.35);
+  transition: all var(--transition);
+  border: 1.5px solid var(--mustard-yellow);
+}
+
+.nav-btn-tg:hover {
+  background: var(--pine-green);
+  color: var(--mustard-yellow);
+  border-color: var(--mustard-yellow);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(5, 77, 63, 0.5);
+}
+
+.nav-btn-tg svg {
+  transition: transform var(--transition);
+}
+
+.nav-btn-tg:hover svg {
+  transform: translate(2px, -2px);
+}
+
+/* ───────────────────────── 3. HERO SECTION (RETRO DISPLAY POSTER) ───────────────────────── */
+.hero {
+  text-align: center;
+  padding: clamp(50px, 8vw, 95px) clamp(20px, 5vw, 60px) clamp(28px, 4vw, 44px);
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mint-cyan);
+  background: rgba(5, 77, 63, 0.6);
+  border: 1.5px solid var(--pine-green);
+  padding: 8px 22px;
+  border-radius: var(--radius-full);
+  margin-bottom: 24px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+/* GIANT CONDENSED DISPLAY TITLE (Matching 'GET' in Image) */
+.hero-title {
+  font-family: 'Big Shoulders Display', 'Bebas Neue', sans-serif;
+  font-size: clamp(3.6rem, 10vw, 7.2rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--mustard-yellow);
+  text-shadow: 4px 5px 0px var(--pine-dark);
+  margin-bottom: 24px;
+}
+
+.hero-title .accent,
+.hero-title .accent-editorial {
+  font-style: normal;
+  color: var(--blossom-pink);
+  text-shadow: 4px 5px 0px rgba(15, 16, 64, 0.8);
+  display: inline-block;
+}
+
+.hero-desc {
+  font-size: clamp(1.02rem, 2vw, 1.22rem);
+  color: var(--text-secondary);
+  max-width: 720px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+}
+
+/* Trust Pillars bar */
+.hero-pillars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: clamp(10px, 2vw, 16px);
+  margin-bottom: 38px;
+}
+
+.hero-pillar-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--dusty-rose);
+  background: rgba(22, 24, 82, 0.7);
+  border: 1px solid var(--border-fine);
+  padding: 7px 18px;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-xs);
+}
+
+.hero-pillar-item .icon {
+  color: var(--mustard-yellow);
+}
+
+/* ───────────────────────── 4. SEARCH BAR & QUICK CHIPS ───────────────────────── */
+.search-wrapper {
+  max-width: 640px;
+  margin: 0 auto 18px;
+  position: relative;
+}
+
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: var(--radius-full);
+  background: var(--bg-surface);
+  border: 2px solid rgba(248, 204, 73, 0.4);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  transition: all var(--transition);
+}
+
+.search-box:focus-within {
+  border-color: var(--mustard-yellow);
+  box-shadow: 0 8px 32px rgba(248, 204, 73, 0.25), 0 0 0 4px rgba(248, 204, 73, 0.15);
+  transform: translateY(-2px);
+}
+
+.search-icon {
+  position: absolute;
+  left: 22px;
+  width: 22px;
+  height: 22px;
+  color: var(--mustard-yellow);
+  pointer-events: none;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 18px 50px 18px 58px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.02rem;
+  color: #ffffff;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+#searchInput::placeholder {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.search-clear {
+  position: absolute;
+  right: 18px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--bg-surface-alt);
+  border: none;
+  color: var(--text-secondary);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.search-clear:hover {
+  background: var(--coral-red);
+  color: #ffffff;
+}
+
+.search-clear.visible {
+  display: flex;
+}
+
+/* Search Quick Suggestion Chips */
+.search-quick-tags {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+.quick-tag-chip {
+  background: rgba(22, 24, 82, 0.8);
+  border: 1px solid var(--border-fine);
+  color: var(--dusty-rose);
+  padding: 5px 14px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.82rem;
+  transition: all var(--transition);
+}
+
+.quick-tag-chip:hover {
+  border-color: var(--mustard-yellow);
+  color: var(--mustard-yellow);
+  background: var(--pine-dark);
+  transform: translateY(-2px);
+}
+
+/* ───────────────────────── 5. SPOTLIGHT FEATURED BANNER ───────────────────────── */
+.spotlight-wrapper {
+  max-width: 1200px;
+  margin: 0 auto clamp(28px, 4vw, 46px);
+  padding: 0 clamp(20px, 4vw, 60px);
+}
+
+.spotlight-card {
+  background: linear-gradient(135deg, var(--pine-green) 0%, #073a2f 100%);
+  border: 2px solid var(--mustard-yellow);
+  border-radius: var(--radius-lg);
+  padding: clamp(26px, 4vw, 36px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, rgba(248, 204, 73, 0.25) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.spotlight-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 1;
+}
+
+.spotlight-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 3px solid var(--mustard-yellow);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
+  background: var(--pine-dark);
+}
+
+.spotlight-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.spotlight-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.spotlight-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--midnight-navy);
+  background: var(--mustard-yellow);
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+  width: fit-content;
+}
+
+.spotlight-title {
+  font-family: 'Big Shoulders Display', 'Bebas Neue', sans-serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.spotlight-desc {
+  font-size: 0.96rem;
+  color: var(--dusty-rose-soft);
+  max-width: 620px;
+  line-height: 1.6;
+}
+
+.spotlight-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.btn-spotlight-join {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 32px;
+  background: var(--mustard-yellow);
+  color: var(--midnight-navy);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.98rem;
+  font-weight: 800;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(248, 204, 73, 0.4);
+  transition: all var(--transition);
+  border: 2px solid var(--mustard-yellow);
+}
+
+.btn-spotlight-join:hover {
+  background: #ffffff;
+  color: var(--pine-green);
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 820px) {
+  .spotlight-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .spotlight-left {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .spotlight-right {
+    width: 100%;
+  }
+  .btn-spotlight-join {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ───────────────────────── 6. CATEGORY FILTERS ───────────────────────── */
+.filters-section {
+  max-width: 1200px;
+  margin: 0 auto 34px;
+  padding: 0 clamp(20px, 4vw, 60px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.filter-btn {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-fine);
+  padding: 9px 22px;
+  border-radius: var(--radius-full);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition);
+  box-shadow: var(--shadow-xs);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-btn:hover {
+  border-color: var(--mustard-yellow);
+  color: var(--mustard-yellow);
+  transform: translateY(-2px);
+}
+
+.filter-btn.active {
+  background: var(--mustard-yellow);
+  color: var(--midnight-navy);
+  border-color: var(--mustard-yellow);
+  box-shadow: 0 4px 18px rgba(248, 204, 73, 0.4);
+}
+
+.filter-btn .badge {
+  font-size: 0.76rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  background: var(--bg-surface-alt);
+  color: var(--dusty-rose);
+}
+
+.filter-btn.active .badge {
+  background: var(--midnight-navy);
+  color: var(--mustard-yellow);
+}
+
+/* ───────────────────────── 7. CHANNELS SHOWCASE SECTION ───────────────────────── */
+.channels-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 60px) clamp(60px, 8vw, 100px);
+}
+
+.section-toolbar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--border-fine);
+}
+
+.section-title {
+  font-family: 'Big Shoulders Display', 'Bebas Neue', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.results-count {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--mint-cyan);
+}
+
+/* ───────────────────────── 8. CHANNEL CARDS (AWWWARDS POSTER EDITION) ───────────────────────── */
+.channels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 32px;
+}
+
+.channel-card {
+  background: var(--bg-surface);
+  border: 2px solid var(--border-fine);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  animation: cardFadeIn 0.35s ease both;
+  position: relative;
+}
+
+@keyframes cardFadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.channel-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--mustard-yellow);
+}
+
+/* ──── CARD COLORWAYS MATCHING SPECIMEN ──── */
+
+/* 1. POSTER PINE (Left Panel of Screenshot) */
+.channel-card.poster-pine {
+  background: #054d3f;
+  border-color: rgba(248, 204, 73, 0.4);
+}
+.channel-card.poster-pine:hover {
+  border-color: var(--mustard-yellow);
+  box-shadow: 0 16px 44px rgba(5, 77, 63, 0.6);
+}
+.channel-card.poster-pine .card-title {
+  color: var(--mustard-yellow);
+}
+.channel-card.poster-pine .card-cat-pill {
+  background: var(--pine-dark);
+  color: var(--mint-cyan);
+  border-color: var(--mint-cyan);
+}
+.channel-card.poster-pine .card-desc {
+  color: rgba(255, 255, 255, 0.9);
+}
+.channel-card.poster-pine .card-handle-pill {
+  background: var(--pine-dark);
+  color: var(--mustard-yellow);
+}
+.channel-card.poster-pine .card-tag {
+  background: rgba(4, 45, 37, 0.6);
+  color: var(--mint-cyan);
+}
+.channel-card.poster-pine .btn-card-join {
+  background: var(--mustard-yellow);
+  color: var(--pine-dark);
+  border: 1.5px solid var(--mustard-yellow);
+}
+.channel-card.poster-pine .btn-card-join:hover {
+  background: #ffffff;
+  color: var(--pine-dark);
+  border-color: #ffffff;
+}
+
+/* 2. POSTER MIDNIGHT (Center Panel of Screenshot) */
+.channel-card.poster-midnight {
+  background: #0f1040;
+  border-color: rgba(239, 177, 192, 0.4);
+}
+.channel-card.poster-midnight:hover {
+  border-color: var(--blossom-pink);
+  box-shadow: 0 16px 44px rgba(15, 16, 64, 0.7);
+}
+.channel-card.poster-midnight .card-title {
+  color: var(--blossom-pink);
+}
+.channel-card.poster-midnight .card-cat-pill {
+  background: #080824;
+  color: var(--coral-red);
+  border-color: var(--coral-red);
+}
+.channel-card.poster-midnight .card-desc {
+  color: rgba(255, 255, 255, 0.88);
+}
+.channel-card.poster-midnight .card-handle-pill {
+  background: #080824;
+  color: var(--blossom-pink);
+}
+.channel-card.poster-midnight .card-tag {
+  background: rgba(8, 8, 36, 0.6);
+  color: var(--blossom-pink);
+}
+.channel-card.poster-midnight .btn-card-join {
+  background: var(--blossom-pink);
+  color: var(--midnight-navy);
+  border: 1.5px solid var(--blossom-pink);
+}
+.channel-card.poster-midnight .btn-card-join:hover {
+  background: #ffffff;
+  color: var(--midnight-navy);
+  border-color: #ffffff;
+}
+
+/* 3. POSTER ROSE (Right Panel of Screenshot) */
+.channel-card.poster-rose {
+  background: #ecc0bd;
+  border-color: #174239;
+}
+.channel-card.poster-rose:hover {
+  border-color: var(--coral-red);
+  box-shadow: 0 16px 44px rgba(236, 192, 189, 0.4);
+}
+.channel-card.poster-rose .card-title {
+  color: #174239; /* Iconic 'BRAND' dark forest color */
+}
+.channel-card.poster-rose .card-cat-pill {
+  background: #174239;
+  color: #ecc0bd;
+  border-color: #ecc0bd;
+}
+.channel-card.poster-rose .card-desc {
+  color: #1c2724;
+  font-weight: 500;
+}
+.channel-card.poster-rose .card-handle-pill {
+  background: #174239;
+  color: #ecc0bd;
+}
+.channel-card.poster-rose .card-tag {
+  background: rgba(23, 66, 57, 0.15);
+  color: #174239;
+}
+.channel-card.poster-rose .btn-card-join {
+  background: #174239;
+  color: #ecc0bd;
+  border: 1.5px solid #174239;
+}
+.channel-card.poster-rose .btn-card-join:hover {
+  background: var(--coral-red);
+  color: #ffffff;
+  border-color: var(--coral-red);
+}
+.channel-card.poster-rose .btn-card-copy {
+  background: rgba(23, 66, 57, 0.12);
+  border-color: #174239;
+  color: #174239;
+}
+.channel-card.poster-rose .btn-card-copy:hover {
+  background: #174239;
+  color: #ecc0bd;
+}
+
+/* 4. POSTER ORANGE (Right Panel Sunset Accent) */
+.channel-card.poster-orange {
+  background: #111a36;
+  border-color: rgba(241, 126, 39, 0.4);
+}
+.channel-card.poster-orange:hover {
+  border-color: var(--sunset-orange);
+  box-shadow: 0 16px 44px rgba(241, 126, 39, 0.35);
+}
+.channel-card.poster-orange .card-title {
+  color: var(--sunset-orange);
+}
+.channel-card.poster-orange .card-cat-pill {
+  background: #080824;
+  color: var(--mint-cyan);
+  border-color: var(--mint-cyan);
+}
+.channel-card.poster-orange .card-desc {
+  color: rgba(255, 255, 255, 0.88);
+}
+.channel-card.poster-orange .card-handle-pill {
+  background: #080824;
+  color: var(--sunset-orange);
+}
+.channel-card.poster-orange .card-tag {
+  background: rgba(8, 8, 36, 0.6);
+  color: var(--sunset-orange);
+}
+.channel-card.poster-orange .btn-card-join {
+  background: var(--sunset-orange);
+  color: #ffffff;
+  border: 1.5px solid var(--sunset-orange);
+}
+.channel-card.poster-orange .btn-card-join:hover {
+  background: #ffffff;
+  color: var(--sunset-orange);
+  border-color: #ffffff;
+}
+
+/* Card Visual Header / Banner */
+.card-banner {
+  width: 100%;
+  height: 195px;
+  position: relative;
+  background: #080824;
+  overflow: hidden;
+}
+
+.card-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.channel-card:hover .card-banner img {
+  transform: scale(1.07);
+}
+
+.card-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Category pill on banner */
+.card-cat-pill {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 4px 12px;
+  border-radius: var(--radius-xs);
+  border: 1px solid currentColor;
+}
+
+/* Exhibition Index number (№ 01, № 02...) */
+.card-index-num {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--mustard-yellow);
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  padding: 3px 10px;
+  border-radius: var(--radius-xs);
+  border: 1px solid rgba(248, 204, 73, 0.4);
+}
+
+/* Floating Avatar Circle */
+.card-avatar-row {
+  position: relative;
+  margin-top: -36px;
+  padding: 0 22px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  z-index: 3;
+}
+
+.card-avatar {
+  width: 68px;
+  height: 68px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 3.5px solid #ffffff;
+  background: #ffffff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+  flex-shrink: 0;
+}
+
+.card-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-handle-pill {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  margin-bottom: 2px;
+}
+
+/* Card Content Body */
+.card-body {
+  padding: 16px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.card-title {
+  font-family: 'Big Shoulders Display', 'Bebas Neue', sans-serif;
+  font-size: 1.7rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1.15;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
+}
+
+.verified-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--tg-blue);
+  flex-shrink: 0;
+}
+
+.card-desc {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 4.4em;
+}
+
+/* Tags List */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 22px;
+}
+
+.card-tag {
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-xs);
+  transition: all var(--transition);
+}
+
+/* Action Buttons */
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.btn-card-join {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 20px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.94rem;
+  font-weight: 800;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  transition: all var(--transition);
+}
+
+.btn-card-copy {
+  width: 46px;
+  height: 46px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-full);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition);
+  flex-shrink: 0;
+}
+
+.btn-card-copy:hover {
+  border-color: var(--mustard-yellow);
+  color: var(--mustard-yellow);
+  background: rgba(248, 204, 73, 0.15);
+  transform: translateY(-2px);
+}
+
+.btn-card-copy svg {
+  width: 19px;
+  height: 19px;
+}
+
+/* ───────────────────────── 9. POPUP MODAL (https://t.me/EdParth) ───────────────────────── */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 8, 36, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.35s ease;
+}
+
+.popup-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup-card {
+  background: #054d3f;
+  border: 2.5px solid var(--mustard-yellow);
+  width: 100%;
+  max-width: 440px;
+  padding: 42px 34px 36px;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  box-shadow: var(--shadow-modal), 0 0 40px rgba(248, 204, 73, 0.2);
+  transform: translateY(24px) scale(0.96);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.popup-overlay.show .popup-card {
+  transform: translateY(0) scale(1);
+}
+
+.popup-avatar-wrap {
+  width: 92px;
+  height: 92px;
+  border-radius: 24px;
+  margin: 0 auto 20px;
+  overflow: hidden;
+  border: 3px solid var(--mustard-yellow);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  background: var(--pine-dark);
+}
+
+.popup-avatar-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.popup-title {
+  font-family: 'Big Shoulders Display', 'Bebas Neue', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--mustard-yellow);
+  margin-bottom: 12px;
+}
+
+.popup-desc {
+  font-size: 0.98rem;
+  color: var(--dusty-rose-soft);
+  line-height: 1.65;
+  margin-bottom: 28px;
+}
+
+.popup-btn-join {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 15px;
+  background: var(--mustard-yellow);
+  color: var(--midnight-navy);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(248, 204, 73, 0.4);
+  margin-bottom: 14px;
+  transition: all var(--transition);
+  border: 2px solid var(--mustard-yellow);
+}
+
+.popup-btn-join:hover {
+  background: #ffffff;
+  color: var(--pine-dark);
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(255, 255, 255, 0.4);
+}
+
+.popup-btn-close {
+  background: none;
+  border: none;
+  color: var(--dusty-rose);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color var(--transition);
+}
+
+.popup-btn-close:hover {
+  color: #ffffff;
+}
+
+/* ───────────────────────── 10. FLOATING ACTION BUTTON ───────────────────────── */
+.fab-telegram {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  background: var(--mustard-yellow);
+  color: var(--midnight-navy);
+  padding: 14px 24px;
+  border-radius: var(--radius-full);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.96rem;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 8px 28px rgba(248, 204, 73, 0.4);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform var(--transition), box-shadow var(--transition);
+  border: 2px solid var(--mustard-yellow);
+}
+
+.fab-telegram:hover {
+  background: #ffffff;
+  color: var(--pine-green);
+  border-color: #ffffff;
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 14px 34px rgba(255, 255, 255, 0.4);
+}
+
+/* ───────────────────────── 11. TOAST NOTIFICATION ───────────────────────── */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(90px);
+  background: var(--mustard-yellow);
+  color: var(--midnight-navy);
+  padding: 13px 26px;
+  border-radius: var(--radius-full);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 800;
+  box-shadow: var(--shadow-modal);
+  z-index: 10001;
+  opacity: 0;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  border: 1.5px solid #ffffff;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ───────────────────────── 12. FOOTER (RETRO EDITORIAL FOOTER) ───────────────────────── */
+footer {
+  background: var(--midnight-darker);
+  color: var(--dusty-rose-soft);
+  padding: clamp(60px, 8vw, 90px) clamp(20px, 5vw, 80px) 36px;
+  position: relative;
+  overflow: hidden;
+  border-top: 2px solid var(--pine-green);
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--pine-green), var(--mustard-yellow), var(--coral-red), var(--mint-cyan));
+}
+
+/* Giant Watermark in Big Shoulders Display */
+footer::after {
+  content: 'EDPARTH';
+  position: absolute;
+  right: -20px;
+  bottom: -40px;
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-size: clamp(8rem, 20vw, 16rem);
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.02);
+  letter-spacing: 0.02em;
+  pointer-events: none;
+  user-select: none;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 60px;
+  margin-bottom: 48px;
+}
+
+.footer-brand-logo {
+  font-family: 'Big Shoulders Display', 'Bebas Neue', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.footer-logo-badge {
+  width: 48px;
+  height: 48px;
+  background: var(--pine-green);
+  border: 2px solid var(--mustard-yellow);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
+}
+
+.footer-logo-badge img,
+.footer-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.footer-mission {
+  font-size: 0.98rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 22px;
+}
+
+.footer-disclaimer {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  border-left: 2px solid var(--mustard-yellow);
+  padding-left: 14px;
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.contact-label {
+  font-family: 'Big Shoulders Display', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mustard-yellow);
+}
+
+.footer-tg-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 28px;
+  background: var(--mustard-yellow);
+  color: var(--midnight-navy);
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  font-size: 0.96rem;
+  font-weight: 800;
+  transition: all var(--transition);
+  box-shadow: 0 6px 20px rgba(248, 204, 73, 0.35);
+  border: 1.5px solid var(--mustard-yellow);
+}
+
+.footer-tg-cta:hover {
+  background: #ffffff;
+  color: var(--midnight-navy);
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(255, 255, 255, 0.4);
+}
+
+.footer-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin-bottom: 26px;
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.footer-bottom strong {
+  color: var(--dusty-rose);
+}
+
+.btn-back-top {
+  background: none;
+  border: none;
+  color: var(--dusty-rose);
+  cursor: pointer;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color var(--transition);
+}
+
+.btn-back-top:hover {
+  color: var(--mustard-yellow);
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .footer-contact {
+    align-items: flex-start;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
