@@ -865,6 +865,45 @@ body > * {
   border-color: #ffffff;
 }
 
+/* 5. POSTER CYAN (Cyber Security / Ethical Hacking Specimen) */
+.channel-card.poster-cyan {
+  background: #091a24;
+  border-color: rgba(73, 227, 230, 0.45);
+}
+.channel-card.poster-cyan:hover {
+  border-color: var(--mint-cyan);
+  box-shadow: 0 16px 44px rgba(73, 227, 230, 0.35);
+}
+.channel-card.poster-cyan .card-title {
+  color: var(--mint-cyan);
+}
+.channel-card.poster-cyan .card-cat-pill {
+  background: #041017;
+  color: var(--mint-cyan);
+  border-color: var(--mint-cyan);
+}
+.channel-card.poster-cyan .card-desc {
+  color: rgba(255, 255, 255, 0.9);
+}
+.channel-card.poster-cyan .card-handle-pill {
+  background: #041017;
+  color: var(--mint-cyan);
+}
+.channel-card.poster-cyan .card-tag {
+  background: rgba(73, 227, 230, 0.12);
+  color: var(--mint-cyan);
+}
+.channel-card.poster-cyan .btn-card-join {
+  background: var(--mint-cyan);
+  color: #041017;
+  border: 1.5px solid var(--mint-cyan);
+}
+.channel-card.poster-cyan .btn-card-join:hover {
+  background: #ffffff;
+  color: #041017;
+  border-color: #ffffff;
+}
+
 /* Card Visual Header / Banner */
 .card-banner {
   width: 100%;

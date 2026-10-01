@@ -47,6 +47,20 @@ const EDPARTH_CHANNELS = [
   },
   {
     id: 4,
+    title: "EDPARTH - Ethical Hacking & Cyber Security",
+    handle: "@edparthhacking",
+    joinLink: "https://t.me/edparthhacking",
+    category: "Ethical Hacking",
+    image: "assets/edparthhacking.jpg",
+    fallbackImage: "https://cdn5.telesco.pe/file/wCUyvKpQba4UVO26xVquzHqMSz5CM4WTGq7BrZLvTusF6ksy_NIy4h3G22aoiz5RZkfqL9AXk4SKMGACbeWyTXjgju9NBAWa21GV-A3VfOCEKsB18Q1hyMicDcLahyRWfk5bXEbDX6Pz4fgzYdln8SyZhtVlB08TXcKXFj_KykEJEQUa-IewgxO18Eb_ypdzuwXLGTa-Ixzz3QcSiZsUU7ptPshNIDUObRLfAB7ZK6OAGIcnKtrjvCqHOorigrG_WJNv6tqg_kZxJMREvU0EfLFtPYXRw7g7AgSa448CE6o7McPzVGoobDf4FCbi_WTeXde3vIfBKtBkKKG4clrrEQ.jpg",
+    description: "Official EDPARTH Channel for Ethical Hacking, Cyber Security, Termux Tutorials, Computer Networks, Linux tools & tech resources.",
+    badge: "Cyber Security",
+    isFeatured: true,
+    theme: "poster-cyan",
+    tags: ["Ethical Hacking", "Cyber Security", "Termux", "Networking", "Linux"]
+  },
+  {
+    id: 5,
     title: "CODE WITH HARRY",
     handle: "Private Group Link",
     joinLink: "https://t.me/+XaQDzN1vxcM1MWQ9",

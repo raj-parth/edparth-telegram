@@ -9,7 +9,8 @@ A high-performance, retro-modern editorial Telegram channels directory website f
 1. **EdParth (MAIN)** — `https://t.me/EdParth`
 2. **EdParth Books & Notes** — `https://t.me/edparthbooks`
 3. **MISSION 100 JEE 2027 PW** — `https://t.me/Arjuna32027`
-4. **CODE WITH HARRY** — `https://t.me/+XaQDzN1vxcM1MWQ9`
+4. **EDPARTH - Ethical Hacking & Cyber Security** — `https://t.me/edparthhacking`
+5. **CODE WITH HARRY** — `https://t.me/+XaQDzN1vxcM1MWQ9`
 
 ---
 
@@ -29,6 +30,7 @@ d:/telegramchannelwebsite/
 │   ├── edparth.jpg       # EdParth Official cover & avatar
 │   ├── edparthbooks.jpg  # Books & Notes channel image
 │   ├── arjuna.jpg        # Arjuna PW channel image
+│   ├── edparthhacking.jpg # Ethical Hacking channel image
 │   └── codewithharry.jpg # Code With Harry channel image
 ├── css/
 │   └── style.css         # Complete Awwwards poster styling & responsive design
