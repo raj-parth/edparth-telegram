@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" width="100%" height="100%" fill="none">
+  <!-- Rounded Pine Green Frame -->
+  <rect x="1" y="1" width="50" height="50" rx="13" fill="#054d3f" stroke="#f8cc49" stroke-width="2"/>
+  
+  <!-- Glowing Guiding Star (Parth Beacon) -->
+  <path d="M26 5L27.4 9.2L31.5 10.5L27.4 11.8L26 16L24.6 11.8L20.5 10.5L24.6 9.2L26 5Z" fill="#49e3e6"/>
+  
+  <!-- Ascending Arrow Head -->
+  <polygon points="26,15.5 33,23 28.5,23 28.5,27.5 23.5,27.5 23.5,23 19,23" fill="#f8cc49"/>
+  
+  <!-- Arrow Shaft / Vertical Center Axis -->
+  <rect x="23.5" y="26" width="5" height="19" rx="1.5" fill="#f8cc49"/>
+  
+  <!-- Letter E (Education / Left Wing) -->
+  <path d="M11 22.5H21V26H15.5V28.5H19.5V31H15.5V34H21V37.5H11V22.5Z" fill="#f8cc49"/>
+  <rect x="15.5" y="26" width="4.5" height="2.5" fill="#ffffff"/>
+  <rect x="15.5" y="31" width="4.5" height="3" fill="#ffffff"/>
+  
+  <!-- Letter P (Parth / Right Wing) -->
+  <path d="M29 22.5H35.5C39 22.5 41.5 24.8 41.5 28C41.5 31.2 39 33.5 35.5 33.5H29V22.5ZM29 30.5H35C36.8 30.5 38 29.5 38 28C38 26.5 36.8 25.5 35 25.5H29V30.5Z" fill="#f8cc49"/>
+  <rect x="30" y="26" width="5.5" height="4" rx="1" fill="#ffffff"/>
+</svg>
